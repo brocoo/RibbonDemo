@@ -1,8 +1,8 @@
 import Foundation
 
-struct Character {
+struct Character: Identifiable {
 
-    let identifier: String
+    let id: Int
     let name: String
     let imageURL: URL?
 }
@@ -12,7 +12,7 @@ struct Character {
 extension Character: Decodable {
     
     enum CodingKeys: String, CodingKey {
-        case identifier = "char_id"
+        case id = "char_id"
         case name
         case imageURL = "img"
     }

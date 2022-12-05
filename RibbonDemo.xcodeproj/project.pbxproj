@@ -19,6 +19,8 @@
 		F9975856293D19910058FA3B /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9975855293D19910058FA3B /* URLSessionProtocol.swift */; };
 		F9975858293D1A180058FA3B /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9975857293D1A180058FA3B /* Endpoint.swift */; };
 		F997585F293D1F5D0058FA3B /* CharactersProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F997585E293D1F5D0058FA3B /* CharactersProvider.swift */; };
+		F9975861293D2BB60058FA3B /* CharactersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9975860293D2BB60058FA3B /* CharactersListView.swift */; };
+		F99F6AC9293DF3B100499003 /* CharactersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99F6AC8293DF3B100499003 /* CharactersListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		F9975855293D19910058FA3B /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
 		F9975857293D1A180058FA3B /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		F997585E293D1F5D0058FA3B /* CharactersProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersProvider.swift; sourceTree = "<group>"; };
+		F9975860293D2BB60058FA3B /* CharactersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListView.swift; sourceTree = "<group>"; };
+		F99F6AC8293DF3B100499003 /* CharactersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,7 @@
 		F997581F293D12050058FA3B /* RibbonDemo */ = {
 			isa = PBXGroup;
 			children = (
+				F9975862293D2BD90058FA3B /* View Models */,
 				F997585D293D1F320058FA3B /* Services */,
 				F9975850293D16E70058FA3B /* Ressources */,
 				F997584C293D12240058FA3B /* Model */,
@@ -145,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				F9975822293D12050058FA3B /* ContentView.swift */,
+				F9975860293D2BB60058FA3B /* CharactersListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -182,6 +188,14 @@
 				F997585E293D1F5D0058FA3B /* CharactersProvider.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		F9975862293D2BD90058FA3B /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				F99F6AC8293DF3B100499003 /* CharactersListViewModel.swift */,
+			);
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,8 +328,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F99F6AC9293DF3B100499003 /* CharactersListViewModel.swift in Sources */,
 				F9975856293D19910058FA3B /* URLSessionProtocol.swift in Sources */,
 				F997584F293D126C0058FA3B /* Character.swift in Sources */,
+				F9975861293D2BB60058FA3B /* CharactersListView.swift in Sources */,
 				F9975858293D1A180058FA3B /* Endpoint.swift in Sources */,
 				F997585F293D1F5D0058FA3B /* CharactersProvider.swift in Sources */,
 				F9975823293D12050058FA3B /* ContentView.swift in Sources */,
