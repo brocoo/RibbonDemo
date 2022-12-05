@@ -15,7 +15,3 @@ extension Quote: Decodable {
         case value = "quote"
     }
 }
-
-// MARK: - Hashable conformance
-
-extension Quote: Hashable { }

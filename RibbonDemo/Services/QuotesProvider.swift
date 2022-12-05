@@ -31,7 +31,7 @@ extension QuotesProvider: QuotesProviding {
 
     func fetchQuotes(for character: Character) {
         client
-            .ressourcePublisher(for: .quotes(author: character.name))
+            .dataPublisher(for: .quotes(author: character.name))
             .decode(type: [Quote].self, decoder: jsonDecoder)
             .sink { [weak self] completion in
                 if case .failure = completion {

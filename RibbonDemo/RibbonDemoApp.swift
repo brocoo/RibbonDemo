@@ -5,8 +5,6 @@ struct RibbonDemoApp: App {
     
     // MARK: Properties
     
-    @State private var character: Character?
-    
     private let client: NetworkClientProtocol
     private let charactersProvider: CharactersProviding
     private let likesProvider: LikesProviding

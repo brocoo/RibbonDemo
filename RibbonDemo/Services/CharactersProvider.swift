@@ -31,7 +31,7 @@ extension CharactersProvider: CharactersProviding {
 
     func fetchAllCharacters() {
         client
-            .ressourcePublisher(for: .characters)
+            .dataPublisher(for: .characters)
             .decode(type: [Character].self, decoder: jsonDecoder)
             .sink { [weak self] completion in
                 if case let .failure(error) = completion {

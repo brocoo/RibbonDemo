@@ -27,6 +27,8 @@ final class CharacterDetailViewModel: ObservableObject {
             .assign(to: &$quotes)
     }
     
+    // MARK: Business logic
+    
     func loadQuotes() {
         quotesProvider
             .fetchQuotes(for: character)

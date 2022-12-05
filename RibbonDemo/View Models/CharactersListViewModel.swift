@@ -15,8 +15,8 @@ final class CharactersListViewModel: ObservableObject {
     
     // MARK: Properties
 
-    @Published var characters: [LikeableCharacter] = []
-    @Published var error: Error?
+    @Published private(set) var characters: [LikeableCharacter] = []
+    @Published private(set) var error: Error?
 
     private let charactersProvider: CharactersProviding
     private var likesProvider: LikesProviding
@@ -44,8 +44,8 @@ final class CharactersListViewModel: ObservableObject {
             }
             .store(in: &cancellables)
     }
-
-    // MARK: Helpers
+    
+    // MARK: Business logic
 
     func loadCharacters() {
         charactersProvider.fetchAllCharacters()

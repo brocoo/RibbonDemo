@@ -14,10 +14,15 @@ struct CharactersListView: View {
             NavigationLink(value: likeableCharacter.character) {
                 characterView(likeableCharacter)
             }
-        }.onAppear {
+        }
+        .navigationTitle("Characters")
+        .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
             viewModel.loadCharacters()
-        }.navigationTitle("Characters")
+        }
     }
+    
+    // MARK: Custom views
     
     private func characterView(_ likeableCharacter: CharactersListViewModel.LikeableCharacter) -> some View {
         let character = likeableCharacter.character
@@ -27,7 +32,7 @@ struct CharactersListView: View {
             Spacer()
             Image(systemName: isLiked ? "heart.fill" : "heart")
                 .renderingMode(.template)
-                .foregroundColor(.blue)
+                .foregroundColor(Color(UIColor.link))
                 .onTapGesture {
                     viewModel.toggleLike(for: character)
                 }
@@ -58,7 +63,8 @@ extension CharactersListView_Previews {
             let characters = (0..<10).map { index in
                 Character(id: index, name: "NAME_\(index)", imageURL: nil)
             }
-            return Just(.success(characters)).eraseToAnyPublisher()
+            return Just(.success(characters))
+                .eraseToAnyPublisher()
         }
     }
 }

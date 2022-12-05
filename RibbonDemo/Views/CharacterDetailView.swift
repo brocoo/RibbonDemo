@@ -7,6 +7,8 @@ struct CharacterDetailView: View {
     
     @ObservedObject var viewModel: CharacterDetailViewModel
     
+    // MARK: View lifecycle
+    
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, pinnedViews: [.sectionHeaders]) {
@@ -22,19 +24,21 @@ struct CharacterDetailView: View {
                 }
                 Section {
                     ForEach(viewModel.quotes) { quote in
-                        Text(quote.value)
-                            .italic()
+                        Text(quote.value).italic()
                         Divider()
                     }
                 } header: {
                     characterHeaderView
                 }
             }.padding()
-        }.navigationBarTitleDisplayMode(.inline)
+        }
+        .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             viewModel.loadQuotes()
         }
     }
+    
+    // MARK: Custom views
 
     private var characterHeaderView: some View {
         HStack {
@@ -42,14 +46,14 @@ struct CharacterDetailView: View {
             Spacer()
             Image(systemName: viewModel.isLiked ? "heart.fill" : "heart")
                 .renderingMode(.template)
-                .foregroundColor(.blue)
+                .foregroundColor(Color(UIColor.link))
                 .onTapGesture {
                     viewModel.toggleLike()
                 }
         }
         .frame(height: 44)
         .font(.title)
-        .background { Color.white }
+        .background { Color(UIColor.systemBackground) }
     }
 }
 

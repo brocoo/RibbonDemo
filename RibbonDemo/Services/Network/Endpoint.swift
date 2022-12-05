@@ -31,10 +31,10 @@ enum Endpoint {
         }
     }
     
-    var queryItems: [URLQueryItem] {
+    var queryItems: [URLQueryItem]? {
         switch self {
         case .characters:
-            return []
+            return nil
         case let .quotes(author):
             let escapedAuthor = author.replacingOccurrences(of: " ", with: "+")
             let query = URLQueryItem(name: "author", value: escapedAuthor)

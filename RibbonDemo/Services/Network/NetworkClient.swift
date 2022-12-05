@@ -5,7 +5,7 @@ import Foundation
 protocol NetworkClientProtocol {
 
     /// Calls the provided endpoint over the network returning a publisher of data
-    func ressourcePublisher(for endpoint: Endpoint) -> AnyPublisher<Data, Error>
+    func dataPublisher(for endpoint: Endpoint) -> AnyPublisher<Data, Error>
 }
 
 /// Concrete network client
@@ -51,7 +51,7 @@ final class NetworkClient {
 
 extension NetworkClient: NetworkClientProtocol {
 
-    func ressourcePublisher(for endpoint: Endpoint) -> AnyPublisher<Data, Error> {
+    func dataPublisher(for endpoint: Endpoint) -> AnyPublisher<Data, Error> {
         let request = makeURLRequest(from: endpoint)
         return session
             .dataTaskPublisher(for: request)
