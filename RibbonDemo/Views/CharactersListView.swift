@@ -6,12 +6,6 @@ struct CharactersListView: View {
     // MARK: Properties
     
     @ObservedObject var viewModel: CharactersListViewModel
-    
-    // MARK: Initializer
-    
-    init(viewModel: CharactersListViewModel) {
-        self.viewModel = viewModel
-    }
 
     // MARK: View lifecycle
     
