@@ -10,6 +10,7 @@ struct RibbonDemoApp: App {
     private let client: NetworkClientProtocol
     private let charactersProvider: CharactersProviding
     private let likesProvider: LikesProviding
+    private let quotesProvider: QuotesProviding
     
     // MARK: Initializer
     
@@ -18,6 +19,7 @@ struct RibbonDemoApp: App {
         self.client = client
         self.charactersProvider = CharactersProvider(client: client)
         self.likesProvider = LikesProvider(storage: .standard)
+        self.quotesProvider = QuotesProvider(client: client)
     }
     
     // MARK: View lifecycle
@@ -44,6 +46,7 @@ struct RibbonDemoApp: App {
     
     private func makeCharacterDetailViewModel(for character: Character) -> CharacterDetailViewModel {
         CharacterDetailViewModel(character: character,
-                                 likesProvider: likesProvider)
+                                 likesProvider: likesProvider,
+                                 quotesProvider: quotesProvider)
     }
 }

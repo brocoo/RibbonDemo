@@ -11,12 +11,13 @@ enum Endpoint {
     // MARK: Cases
     
     case characters
+    case quotes(author: String)
     
     // MARK: Properties
 
     var method: Method {
         switch self {
-        case .characters:
+        case .characters, .quotes:
             return .get
         }
     }
@@ -25,10 +26,19 @@ enum Endpoint {
         switch self {
         case .characters:
             return "/api/characters"
+        case .quotes:
+            return "/api/quote"
         }
     }
     
     var queryItems: [URLQueryItem] {
-        []
+        switch self {
+        case .characters:
+            return []
+        case let .quotes(author):
+            let escapedAuthor = author.replacingOccurrences(of: " ", with: "+")
+            let query = URLQueryItem(name: "author", value: escapedAuthor)
+            return [query]
+        }
     }
 }

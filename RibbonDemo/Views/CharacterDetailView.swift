@@ -19,16 +19,23 @@ struct CharacterDetailView: View {
                             EmptyView()
                         }
                     }
-                }.background(Color.purple)
+                }
                 Section {
-                    
+                    ForEach(viewModel.quotes) { quote in
+                        Text(quote.value)
+                            .italic()
+                        Divider()
+                    }
                 } header: {
                     characterHeaderView
                 }
             }.padding()
         }.navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            viewModel.loadQuotes()
+        }
     }
-    
+
     private var characterHeaderView: some View {
         HStack {
             Text(viewModel.character.name)
@@ -40,7 +47,9 @@ struct CharacterDetailView: View {
                     viewModel.toggleLike()
                 }
         }
+        .frame(height: 44)
         .font(.title)
+        .background { Color.white }
     }
 }
 
@@ -53,7 +62,26 @@ struct CharacterDetailView_Previews: PreviewProvider {
                                   name: "John Appleseed",
                                   imageURL: nil)
         let viewModel = CharacterDetailViewModel(character: character,
-                                                likesProvider: LikesProvider())
+                                                likesProvider: LikesProvider(),
+                                                 quotesProvider: MockQuotesProvider())
         return CharacterDetailView(viewModel: viewModel)
+    }
+}
+
+extension CharacterDetailView_Previews {
+    
+    private final class MockQuotesProvider: QuotesProviding {
+
+        func fetchQuotes(for character: Character) { }
+        
+        var quotesPublisher: AnyPublisher<[Quote], Never> {
+            let quotes = (0..<20).map { index in
+                let value = """
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Leo integer malesuada nunc vel risus. Sit amet nisl purus in mollis nunc.
+                """
+                return Quote(id: index, value: "\(index): \(value)")
+            }
+            return Just(quotes).eraseToAnyPublisher()
+        }
     }
 }
