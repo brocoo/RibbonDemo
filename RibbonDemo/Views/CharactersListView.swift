@@ -9,17 +9,31 @@ struct CharactersListView: View {
     
     // MARK: Initializer
     
-    init(provider: CharactersProviding) {
-        self.viewModel = CharactersListViewModel(provider: provider)
+    init(viewModel: CharactersListViewModel) {
+        self.viewModel = viewModel
     }
-    
+
     // MARK: View lifecycle
     
     var body: some View {
         List(viewModel.characters) { character in
-            Text("\(character.name)")
+            characterView(character)
         }.onAppear {
             viewModel.loadCharacters()
+        }
+    }
+    
+    private func characterView(_ likeableCharacter: CharactersListViewModel.LikeableCharacter) -> some View {
+        let character = likeableCharacter.character
+        let isLiked = likeableCharacter.isLiked
+        return HStack(alignment: .top) {
+            Text(character.name)
+            Spacer()
+            Button {
+                viewModel.toggleLike(for: character)
+            } label: {
+                Image(systemName: isLiked ? "heart.fill" : "heart")
+            }
         }
     }
 }
@@ -29,14 +43,17 @@ struct CharactersListView: View {
 struct CharactersListView_Previews: PreviewProvider {
     
     static var previews: some View {
-        let provider = MockProvider()
-        CharactersListView(provider: provider)
+        let charactersProvider = MockCharactersProvider()
+        let likesProvider = LikesProvider()
+        let viewModel = CharactersListViewModel(charactersProvider: charactersProvider,
+                                                likesProvider: likesProvider)
+        CharactersListView(viewModel: viewModel)
     }
 }
 
 extension CharactersListView_Previews {
     
-    private final class MockProvider: CharactersProviding {
+    private final class MockCharactersProvider: CharactersProviding {
 
         func fetchAllCharacters() { }
         

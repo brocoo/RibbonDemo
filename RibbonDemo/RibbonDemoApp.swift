@@ -7,6 +7,7 @@ struct RibbonDemoApp: App {
     
     private let client: NetworkClientProtocol
     private let charactersProvider: CharactersProviding
+    private let likesProvider: LikesProviding
     
     // MARK: Initializer
     
@@ -14,6 +15,7 @@ struct RibbonDemoApp: App {
         let client = NetworkClient(session: URLSession.shared)
         self.client = client
         self.charactersProvider = CharactersProvider(client: client)
+        self.likesProvider = LikesProvider(storage: .standard)
     }
     
     // MARK: View lifecycle
@@ -21,7 +23,8 @@ struct RibbonDemoApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                CharactersListView(provider: charactersProvider)
+                CharactersListView(viewModel: CharactersListViewModel(charactersProvider: charactersProvider,
+                                                                      likesProvider: likesProvider))
             }
         }
     }

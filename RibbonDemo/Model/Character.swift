@@ -1,6 +1,6 @@
 import Foundation
 
-struct Character: Identifiable {
+struct Character {
 
     let id: Int
     let name: String
