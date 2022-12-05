@@ -24,18 +24,32 @@ struct RibbonDemoApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                CharactersListView(viewModel: makeCharacterListViewModel())
-                .navigationDestination(for: Character.self) { character in
-                    if let character = character {
-                        CharacterDetailView(viewModel: makeCharacterDetailViewModel(for: character))
-                    }
+            if isRunningUnitTests() {
+                EmptyView()
+            } else {
+                NavigationStack {
+                    CharactersListView(viewModel: makeCharacterListViewModel())
+                        .navigationDestination(for: Character.self) { character in
+                            if let character = character {
+                                CharacterDetailView(viewModel: makeCharacterDetailViewModel(for: character))
+                            }
+                        }
                 }
             }
         }
     }
 
     // MARK: Helpers
+    
+    private func isRunningUnitTests() -> Bool {
+        #if DEBUG
+        let isUnitTesting = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+        guard !isUnitTesting else {
+            return true
+        }
+        #endif
+        return false
+    }
     
     private func makeCharacterListViewModel() -> CharactersListViewModel {
         CharactersListViewModel(charactersProvider: charactersProvider,

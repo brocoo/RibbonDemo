@@ -7,9 +7,9 @@ struct Character {
     let imageURL: URL?
 }
 
-// MARK: - Decodable conformance
+// MARK: - Codable conformance
 
-extension Character: Decodable {
+extension Character: Codable {
     
     enum CodingKeys: String, CodingKey {
         case id = "char_id"
@@ -21,3 +21,7 @@ extension Character: Decodable {
 // MARK: - Hashable conformance
 
 extension Character: Hashable { }
+
+// MARK: - Equatable conformance
+
+extension Character: Equatable { }

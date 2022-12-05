@@ -1,5 +1,6 @@
 import Foundation
 
+/// Protocol responsible for storing and providing liked characters
 protocol LikesProviding {
 
     subscript(characterId: Int) -> Bool { get set }

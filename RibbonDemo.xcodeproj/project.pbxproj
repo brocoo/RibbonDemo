@@ -13,8 +13,9 @@
 		F990E063293E2DB700E7D074 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = F990E062293E2DB700E7D074 /* Quote.swift */; };
 		F990E067293E3B3400E7D074 /* NetworkClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F990E066293E3B3400E7D074 /* NetworkClientTests.swift */; };
 		F990E06A293E3B9F00E7D074 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F990E069293E3B9F00E7D074 /* MockURLSession.swift */; };
+		F990E06C293E41AC00E7D074 /* CharactersProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F990E06B293E41AC00E7D074 /* CharactersProviderTests.swift */; };
+		F990E06F293E41FC00E7D074 /* MockNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F990E06E293E41FC00E7D074 /* MockNetworkClient.swift */; };
 		F9975821293D12050058FA3B /* RibbonDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9975820293D12050058FA3B /* RibbonDemoApp.swift */; };
-		F9975823293D12050058FA3B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9975822293D12050058FA3B /* ContentView.swift */; };
 		F9975825293D12090058FA3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9975824293D12090058FA3B /* Assets.xcassets */; };
 		F9975829293D12090058FA3B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9975828293D12090058FA3B /* Preview Assets.xcassets */; };
 		F997583D293D120A0058FA3B /* RibbonDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F997583C293D120A0058FA3B /* RibbonDemoUITests.swift */; };
@@ -53,9 +54,10 @@
 		F990E062293E2DB700E7D074 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		F990E066293E3B3400E7D074 /* NetworkClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClientTests.swift; sourceTree = "<group>"; };
 		F990E069293E3B9F00E7D074 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		F990E06B293E41AC00E7D074 /* CharactersProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersProviderTests.swift; sourceTree = "<group>"; };
+		F990E06E293E41FC00E7D074 /* MockNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkClient.swift; sourceTree = "<group>"; };
 		F997581D293D12050058FA3B /* RibbonDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RibbonDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9975820293D12050058FA3B /* RibbonDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RibbonDemoApp.swift; sourceTree = "<group>"; };
-		F9975822293D12050058FA3B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F9975824293D12090058FA3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F9975826293D12090058FA3B /* RibbonDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RibbonDemo.entitlements; sourceTree = "<group>"; };
 		F9975828293D12090058FA3B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				F990E065293E3AD700E7D074 /* Network */,
+				F990E06B293E41AC00E7D074 /* CharactersProviderTests.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -109,16 +112,16 @@
 		F990E065293E3AD700E7D074 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				F990E068293E3B8100E7D074 /* Mocks */,
 				F990E066293E3B3400E7D074 /* NetworkClientTests.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
 		};
-		F990E068293E3B8100E7D074 /* Mocks */ = {
+		F990E06D293E41DB00E7D074 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
 				F990E069293E3B9F00E7D074 /* MockURLSession.swift */,
+				F990E06E293E41FC00E7D074 /* MockNetworkClient.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 		F9975831293D120A0058FA3B /* RibbonDemoTests */ = {
 			isa = PBXGroup;
 			children = (
+				F990E06D293E41DB00E7D074 /* Mocks */,
 				F990E064293E3AC400E7D074 /* Services */,
 			);
 			path = RibbonDemoTests;
@@ -186,7 +190,6 @@
 		F997584B293D121F0058FA3B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F9975822293D12050058FA3B /* ContentView.swift */,
 				F9975860293D2BB60058FA3B /* CharactersListView.swift */,
 				F990E05A293E1A3000E7D074 /* CharacterDetailView.swift */,
 			);
@@ -380,7 +383,6 @@
 				F9975858293D1A180058FA3B /* Endpoint.swift in Sources */,
 				F990E061293E2D9900E7D074 /* QuotesProvider.swift in Sources */,
 				F997585F293D1F5D0058FA3B /* CharactersProvider.swift in Sources */,
-				F9975823293D12050058FA3B /* ContentView.swift in Sources */,
 				F99F6ACB293E06BA00499003 /* LikesProvider.swift in Sources */,
 				F990E05D293E1B3E00E7D074 /* CharacterDetailViewModel.swift in Sources */,
 				F9975821293D12050058FA3B /* RibbonDemoApp.swift in Sources */,
@@ -392,6 +394,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F990E06C293E41AC00E7D074 /* CharactersProviderTests.swift in Sources */,
+				F990E06F293E41FC00E7D074 /* MockNetworkClient.swift in Sources */,
 				F990E06A293E3B9F00E7D074 /* MockURLSession.swift in Sources */,
 				F990E067293E3B3400E7D074 /* NetworkClientTests.swift in Sources */,
 			);

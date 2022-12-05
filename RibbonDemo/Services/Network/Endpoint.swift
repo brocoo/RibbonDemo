@@ -1,6 +1,6 @@
 import Foundation
 
-enum Endpoint {
+enum Endpoint: Equatable {
 
     enum Method: String {
         case get
