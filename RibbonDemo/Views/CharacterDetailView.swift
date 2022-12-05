@@ -8,25 +8,39 @@ struct CharacterDetailView: View {
     @ObservedObject var viewModel: CharacterDetailViewModel
     
     var body: some View {
-        LazyVStack(alignment: .leading, spacing: 8, pinnedViews: [.sectionHeaders, .sectionFooters]) {
-            Section {
-                AsyncImage(url: viewModel.character.imageURL)
-            } footer: {
-                characterHeaderView
-            }
-        }
+        ScrollView {
+            LazyVStack(alignment: .leading, pinnedViews: [.sectionHeaders]) {
+                Section {
+                    AsyncImage(url: viewModel.character.imageURL) { phase in
+                        switch phase {
+                        case let .success(image):
+                            image.resizable().scaledToFit()
+                        default:
+                            EmptyView()
+                        }
+                    }
+                }.background(Color.purple)
+                Section {
+                    
+                } header: {
+                    characterHeaderView
+                }
+            }.padding()
+        }.navigationBarTitleDisplayMode(.inline)
     }
     
     private var characterHeaderView: some View {
         HStack {
             Text(viewModel.character.name)
             Spacer()
-            Button {
-                viewModel.toggleLike()
-            } label: {
-                Image(systemName: viewModel.isLiked ? "heart.fill" : "heart")
-            }
+            Image(systemName: viewModel.isLiked ? "heart.fill" : "heart")
+                .renderingMode(.template)
+                .foregroundColor(.blue)
+                .onTapGesture {
+                    viewModel.toggleLike()
+                }
         }
+        .font(.title)
     }
 }
 

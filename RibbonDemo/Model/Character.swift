@@ -17,3 +17,7 @@ extension Character: Decodable {
         case imageURL = "img"
     }
 }
+
+// MARK: - Hashable conformance
+
+extension Character: Hashable { }
